@@ -2,7 +2,7 @@
 04.06.2021
 
 ### Project Title
-bykeshare.py
+Explore US Bikeshare Data
 
 ### Description
 explore bykeshare data with python
@@ -15,4 +15,7 @@ data/new_york_city.csv
 
 ### Credits
 tabulate  -> https://pypi.org/project/tabulate/
+python -> https://www.python.org/
+numpy -> https://numpy.org/
+pandas -> https://pandas.pydata.org/
 

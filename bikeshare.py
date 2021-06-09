@@ -91,7 +91,15 @@ def load_data(city, month, day):
 
 
 def hour_stats(df):
-    """Displays statistics on the hour of travel"""
+    """
+    Displays statistics on the hour of travel
+
+    Args:
+        df - Pandas DataFrame to explore
+
+    Returns:
+         nothing
+    """
     # display the most common start hour
     column_name = 'Start Time'
     hour_column_name = 'hour'
@@ -105,7 +113,15 @@ def hour_stats(df):
 
 
 def time_stats(df):
-    """Displays statistics on the most frequent times of travel."""
+    """
+    Displays statistics on the most frequent times of travel.
+
+    Args:
+        df - Pandas DataFrame to explore
+
+    Returns:
+         nothing
+    """
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
@@ -130,7 +146,15 @@ def time_stats(df):
 
 
 def station_stats(df):
-    """Displays statistics on the most popular stations and trip."""
+    """
+    Displays statistics on the most popular stations and trip.
+
+    Args:
+        df - Pandas DataFrame to explore
+
+    Returns:
+         nothing
+    """
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
@@ -153,7 +177,15 @@ def station_stats(df):
 
 
 def trip_duration_stats(df):
-    """Displays statistics on the total and average trip duration."""
+    """
+    Displays statistics on the total and average trip duration.
+
+    Args:
+        df - Pandas DataFrame to explore
+
+    Returns:
+         nothing
+    """
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
 
@@ -170,7 +202,15 @@ def trip_duration_stats(df):
 
 
 def print_types_count(column_name, df):
-    """ Display all values of column_name in df with the count of occurrence"""
+    """
+    Display all values of column_name in df with the count of occurrence
+    Args:
+        (str) column_name - name of the column in the dataframe to group by
+        df - Pandas DataFrame to explore
+
+    Returns:
+         nothing
+    """
     default_value = "no set"
     if column_name in df.columns:
         types_series = df.fillna(default_value).groupby([column_name])[column_name].count()
@@ -183,7 +223,14 @@ def print_types_count(column_name, df):
 
 
 def birth_year_stats(df):
-    """Display statistics regarding year of birth of users"""
+    """
+    Display statistics regarding year of birth of users
+    Args:
+        df - Pandas DataFrame to explore
+
+    Returns:
+         nothing
+    """
     column_name = 'Birth Year'
     if column_name in df.columns:
         earliest_year_of_birth = df[column_name].min()
@@ -199,7 +246,14 @@ def birth_year_stats(df):
 
 
 def user_stats(df):
-    """Displays statistics on bikeshare users."""
+    """
+    Displays statistics on bikeshare users.
+    Args:
+        df - Pandas DataFrame to explore
+
+    Returns:
+         nothing
+    """
     print('\nCalculating User Stats...\n')
     start_time = time.time()
 
@@ -215,7 +269,13 @@ def user_stats(df):
 
 
 def display_data(df):
-    """Display data slices from trip list in table layout
+    """
+    Display data slices from trip list in table layout
+    Args:
+        df - Pandas DataFrame to explore
+
+    Returns:
+         nothing
     """
     print ("We found ", len(df), " trips.")
     view_data = input(

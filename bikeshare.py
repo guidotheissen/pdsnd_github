@@ -5,9 +5,9 @@ import numpy as np
 import os
 from tabulate import tabulate
 
-CITY_DATA = {'chicago': 'short.csv',
-             'new york city': 'new_york_city.csv',
-             'washington': 'washington.csv'}
+CITY_DATA = {'chicago': 'data/chicago.csv',
+             'new york city': 'data/new_york_city.csv',
+             'washington': "data/washington.csv"}
 
 MONTH_OF_YEAR = ('january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october',
                  'november', 'december', 'all')
@@ -29,7 +29,7 @@ def get_filters():
     while True:
         city = input('\nplease insert city \n')
         if city.lower() not in CITY_DATA:
-            print("Unknown city! Please take one of ", CITY_DATA.keys())
+            print("Unknown city! Please take one of {}".format(CITY_DATA.keys()))
             continue
         else:
             break
@@ -37,7 +37,7 @@ def get_filters():
     while True:
         month = input('please insert month:\n')
         if month.lower() not in MONTH_OF_YEAR:
-            print("Unknown month! Please take one of ", MONTH_OF_YEAR)
+            print("Unknown month! Please take one of {}".format(MONTH_OF_YEAR))
             continue
         else:
             break
@@ -45,7 +45,7 @@ def get_filters():
     while True:
         day = input('please insert day of week:\n')
         if day.lower() not in DAY_OF_WEEK:
-            print("Unknown day! Please take one of ", DAY_OF_WEEK)
+            print("Unknown day! Please take one of {}".format(DAY_OF_WEEK))
             continue
         else:
             break
@@ -109,7 +109,7 @@ def hour_stats(df):
 
     # find the most popular hour
     popular_hour = df[hour_column_name].value_counts().idxmax()
-    print('Most Popular Start Hour:', popular_hour)
+    print('Most Popular Start Hour: {}'.format(popular_hour))
 
 
 def time_stats(df):
@@ -128,14 +128,14 @@ def time_stats(df):
     # display the most common month
     if 'month' in df.columns and len(df['month'].value_counts()) > 1:
         popular_month = df['month'].value_counts().idxmax()
-        print("Most popular month: ", MONTH_OF_YEAR[popular_month-1])
+        print("Most popular month: {}".format(MONTH_OF_YEAR[popular_month-1]))
     else:
         print('Only one month selected!')
 
     # display the most common day of week
     if 'day_of_week' in df.columns and len(df['day_of_week'].value_counts()) > 1:
         popular_day = df['day_of_week'].value_counts().idxmax()
-        print("Most popular day in week: ", popular_day)
+        print("Most popular day in week: {}".format(popular_day))
     else:
         print('Only one day of week selected!')
 
@@ -161,16 +161,16 @@ def station_stats(df):
 
     # display most commonly used start station
     popular_start_station = df['Start Station'].mode()[0]
-    print('Most Popular Start Station:', popular_start_station)
+    print('Most Popular Start Station: {}'.format(popular_start_station))
 
     # display most commonly used end station
     popular_end_station = df['End Station'].mode()[0]
-    print('Most Popular End Station:', popular_end_station)
+    print('Most Popular End Station: {}'.format(popular_end_station))
 
     # display most frequent combination of start station and end station trip
     combinations = df.groupby(['Start Station', 'End Station']).count().iloc[0:, 2]
     favorite_combination_str = str(combinations.idxmax()).replace("('", "").replace("')", "")
-    print("Most popular combination:\nFrom -> ", favorite_combination_str.split("', '")[0], " to -> ", favorite_combination_str.split("', '")[1], combinations.max())
+    print("Most popular combination:\nFrom -> {} to -> {}, Times: {}".format(favorite_combination_str.split("', '")[0], favorite_combination_str.split("', '")[1], combinations.max()))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)

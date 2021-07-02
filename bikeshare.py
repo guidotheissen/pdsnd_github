@@ -214,11 +214,11 @@ def print_types_count(column_name, df):
     default_value = "no set"
     if column_name in df.columns:
         types_series = df.fillna(default_value).groupby([column_name])[column_name].count()
-        print(column_name, ":")
+        print("{} :".format(column_name))
         for k in types_series.index:
             print("{}:\t\t{}".format(k, types_series[k]))
     else:
-        print("No", column_name, "information given!")
+        print("No {} information given!".format(column_name))
     print("")
 
 
@@ -234,13 +234,13 @@ def birth_year_stats(df):
     column_name = 'Birth Year'
     if column_name in df.columns:
         earliest_year_of_birth = df[column_name].min()
-        print("Earliest year of birth:\t\t", int(earliest_year_of_birth))
+        print("Earliest year of birth:\t\t{}".format(int(earliest_year_of_birth)))
 
         most_recent_year_of_birth = df[column_name].max()
-        print("Most recent year of birth:\t", int(most_recent_year_of_birth))
+        print("Most recent year of birth:\t{}".format(int(most_recent_year_of_birth)))
 
         most_common_year_of_birth = df[column_name].value_counts().idxmax()
-        print("Most common year of birth:\t", int(most_common_year_of_birth))
+        print("Most common year of birth:\t{}".format(int(most_common_year_of_birth)))
     else:
         print("No year of birth given!")
 

@@ -292,7 +292,7 @@ def display_data(df):
             end_loc = start_loc+slice_size
         print(tabulate(df.iloc[start_loc:end_loc, 1:len(df.columns)], headers="keys", tablefmt="psql"))
         start_loc += slice_size
-        view_data = input("Do you wish to see more?: ").lower()
+        view_data = input("Do you wish to see more (enter \"no\" to stop)?: ").lower()
 
 
 def main():
